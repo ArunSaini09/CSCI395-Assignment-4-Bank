@@ -9,8 +9,7 @@ import {Link} from 'react-router-dom';
 const Debits = (props) => {
   // Create the list of Debit items
   let debitsView = () => {
-    const { debits } = props;
-    return debits.map((debit) => {  // Extract "id", "amount", "description" and "date" properties of each debits JSON array element
+    return props.debits.map((debit) => {  // Extract "id", "amount", "description" and "date" properties of each debits JSON array element
       let date = debit.date.slice(0,10);
       return <li key={debit.id}>{debit.amount} {debit.description} {date}</li>
     }) 

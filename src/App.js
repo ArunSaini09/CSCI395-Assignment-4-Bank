@@ -34,6 +34,18 @@ class App extends Component {
     this.setState({currentUser: newUser})
   }
 
+
+  //make api call
+  async componentDidMount() {
+    //debits///////////////////////////////////
+    const url = "https://moj-api.herokuapp.com/debits";
+    fetch(url).then(response => response.json())
+    .then((data) => {
+      this.setState({debitList: data});
+    }) 
+    
+  };
+
   // Create Routes and React elements to be rendered using React components
   render() {  
     // Create React elements and pass input props to components
