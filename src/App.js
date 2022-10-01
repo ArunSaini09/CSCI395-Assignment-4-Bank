@@ -20,6 +20,7 @@ class App extends Component {
     this.state = {
       accountBalance: 1234567.89,
       debitList: [],
+      creditList: [],
       currentUser: {
         userName: 'Joe Smith',
         memberSince: '11/22/99',
@@ -65,6 +66,13 @@ class App extends Component {
     .then((data) => {
       this.setState({debitList: data});
     }) 
+
+    //credit////////////////////////////////////
+    const url2 = "https://moj-api.herokuapp.com/credits";
+    fetch(url2).then(response => response.json())
+    .then((data) => {
+      this.setState({creditList: data});
+    })
     
   };
 
@@ -77,7 +85,7 @@ class App extends Component {
     );
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />)
     const DebitsComponent = () => (<Debits debits={this.state.debitList} accountBalance={this.state.accountBalance} addDebit={this.addDebit}/>) 
-
+    const CreditsComponent = () => (<Credits credits={this.state.creditList} accountBalance={this.state.accountBalance} addCredit={this.addCredit}/>)
     // Important: Include the "basename" in Router, which is needed for deploying the React app to GitHub Pages
     return (
       <Router basename="/bank-of-react-example-code-gh-pages">
@@ -85,7 +93,7 @@ class App extends Component {
           <Route exact path="/" render={HomeComponent}/>
           <Route exact path="/userProfile" render={UserProfileComponent}/>
           <Route exact path="/login" render={LogInComponent}/>
-          <Route exact path="/credits" render={Credits}/>
+          <Route exact path="/credits" render={CreditsComponent}/>
           <Route exact path="/debits" render={DebitsComponent}/>
         </div>
       </Router>
