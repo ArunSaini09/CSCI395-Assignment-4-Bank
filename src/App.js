@@ -64,7 +64,7 @@ class App extends Component {
     //create date obj
     const date = new Date();
     const creditDate = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay();
-    //create newDebit obj with same fields from API
+    //create newCredit obj with same fields from API
     let newCredit = {
       "id": Math.floor(Math.random() * 99),
       "description": event.target[0].value,
@@ -74,7 +74,7 @@ class App extends Component {
     //set new states
      this.setState({
       accountBalance: this.state.accountBalance + event.target[1].value,
-      //debitList is an array of objects, render the api data and then the newDebit object
+      //creditList is an array of objects, render the api data and then the newDebit object
       creditList: [...this.state.creditList, newCredit]
     });
      
