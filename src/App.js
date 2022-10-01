@@ -13,6 +13,7 @@ import UserProfile from './components/UserProfile';
 import LogIn from './components/Login';
 import Credits from './components/Credits';
 import Debits from './components/Debits';
+import AccountBalance from './components/AccountBalance';
 
 class App extends Component {
   constructor() {  // Create and initialize state
@@ -32,6 +33,28 @@ class App extends Component {
     const newUser = {...this.state.currentUser}
     newUser.userName = logInInfo.userName
     this.setState({currentUser: newUser})
+  }
+  //Update debit list and accountBalance
+  addDebit = (event) => {
+    //prevents page refresh
+    event.preventDefault();
+    //create date obj
+    const date = new Date();
+    const debitDate = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay();
+    //create newDebit obj with same fields from API
+    let newDebit = {
+      "id": Math.floor(Math.random() * 99),
+      "description": event.target[0].value,
+      "amount": event.target[1].value,
+      "date": debitDate
+    }
+    //set new states
+     this.setState({
+      accountBalance: this.state.accountBalance - event.target[1].value,
+      //debitList is an array of objects, render the api data and then the newDebit object
+      debitList: [...this.state.debitList, newDebit]
+    });
+     
   }
 
 
@@ -54,7 +77,7 @@ class App extends Component {
       <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince} />
     );
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />)
-    const DebitsComponent = () => (<Debits debits={this.state.debitList} />) 
+    const DebitsComponent = () => (<Debits debits={this.state.debitList} accountBalance={this.state.accountBalance} addDebit={this.addDebit}/>) 
 
     // Important: Include the "basename" in Router, which is needed for deploying the React app to GitHub Pages
     return (
