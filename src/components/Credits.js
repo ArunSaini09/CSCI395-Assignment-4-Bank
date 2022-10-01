@@ -28,7 +28,7 @@ const Credits = (props) => {
         <input type="number" name="amount" placeholder="amount" step="0.01"/>
         <button type="submit">Add Credit</button>
       </form>
-      
+
       <br/>
       <AccountBalance accountBalance={props.accountBalance} />
       <br/>
