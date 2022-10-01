@@ -20,7 +20,9 @@ const Credits = (props) => {
   return (
     <div>
       <h1>Credits</h1>
+
       {creditsView()}
+      
       <br/>
       <Link to="/">Return to Home</Link>
     </div>
