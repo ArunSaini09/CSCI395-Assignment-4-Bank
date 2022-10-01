@@ -20,6 +20,7 @@ class App extends Component {
     this.state = {
       accountBalance: 1234567.89,
       debitList: [],
+      creditList: [],
       currentUser: {
         userName: 'Joe Smith',
         memberSince: '11/22/99',
@@ -65,6 +66,13 @@ class App extends Component {
     .then((data) => {
       this.setState({debitList: data});
     }) 
+
+    //credit////////////////////////////////////
+    const url2 = "https://moj-api.herokuapp.com/credits";
+    fetch(url2).then(response => response.json())
+    .then((data) => {
+      this.setState({creditList: data});
+    })
     
   };
 
