@@ -57,6 +57,29 @@ class App extends Component {
      
   }
 
+  //Update credit list and accountBalance
+  addCredit = (event) => {
+    //prevents page refresh
+    event.preventDefault();
+    //create date obj
+    const date = new Date();
+    const creditDate = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay();
+    //create newCredit obj with same fields from API
+    let newCredit = {
+      "id": Math.floor(Math.random() * 99),
+      "description": event.target[0].value,
+      "amount": event.target[1].value,
+      "date": creditDate
+    }
+    //set new states
+     this.setState({
+      accountBalance: this.state.accountBalance + Number(event.target[1].value),
+      //creditList is an array of objects, render the api data and then the newDebit object
+      creditList: [...this.state.creditList, newCredit]
+    });
+     
+  }
+
 
   //make api call
   async componentDidMount() {

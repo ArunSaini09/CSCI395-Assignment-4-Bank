@@ -23,6 +23,14 @@ const Credits = (props) => {
 
       {creditsView()}
       
+      <form onSubmit={props.addCredit}> 
+        <input type="text" name="description" placeholder="description"/>
+        <input type="number" name="amount" placeholder="amount" step="0.01"/>
+        <button type="submit">Add Credit</button>
+      </form>
+
+      <br/>
+      <AccountBalance accountBalance={props.accountBalance} />
       <br/>
       <Link to="/">Return to Home</Link>
     </div>
