@@ -74,7 +74,7 @@ class App extends Component {
     //set new states
      this.setState({
       accountBalance: this.state.accountBalance + Number(event.target[1].value),
-      //creditList is an array of objects, render the api data and then the newDebit object
+      //creditList is an array of objects, render the api data and then the newCredit object
       creditList: [...this.state.creditList, newCredit]
     });
      
