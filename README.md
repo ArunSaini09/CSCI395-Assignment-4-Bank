@@ -15,8 +15,8 @@ Note: This application uses React Router version 5. Optionally, you can run the 
 ### Group Members:
 Arun Saini - ArunSaini09
 
-### Live Link - TO BE EDITED:
-[Website link](https://johnnylaicode.github.io/bank-of-react-example-code-gh-pages/)
+### Live Link
+[Website link](https://arunsaini09.github.io/CSCI395-Assignment-4-Bank/)
 
 ----------
 ### Use the following steps to set up and deploy the React application to GitHub Pages
